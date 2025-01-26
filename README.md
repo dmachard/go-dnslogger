@@ -78,15 +78,18 @@
 - **[Transformers](./docs/transformers.md)**
 
   - Detect [Newly Observed Domains](docs/transformers/transform_newdomaintracker.md)
-  - [Rewrite](docs/transformers/transform_rewrite.md) DNS messages or custom [Relabeling](docs/transformers/transform_relabeling.md) for JSON output
+  - [Rewrite](docs/transformers/transform_rewrite.md) DNS messages 
+  - Custom JSON output [Relabeling](docs/transformers/transform_relabeling.md)
   - Add additionnal [Tags](docs/transformers/transform_atags.md) in DNS messages
-  - Traffic [Filtering](docs/transformers/transform_trafficfiltering.md) and [Reducer](docs/transformers/transform_trafficreducer.md)
+  - Traffic [Filtering](docs/transformers/transform_trafficfiltering.md) 
+  - Merge similar DNS logs with the [Reducer](docs/transformers/transform_trafficreducer.md)
   - Latency [Computing](docs/transformers/transform_latency.md)
   - Apply [User Privacy](docs/transformers/transform_userprivacy.md)
   - [Normalize](docs/transformers/transform_normalize.md) DNS messages
   - Add [Geographical](docs/transformers/transform_geoip.md) metadata
   - Various data [Extractor](docs/transformers/transform_dataextractor.md)
-  - Suspicious traffic [Detector](docs/transformers/transform_suspiciousdetector.md) and [Prediction](docs/transformers/transform_trafficprediction.md)
+  - Suspicious traffic [Detector](docs/transformers/transform_suspiciousdetector.md) 
+  - Help to train your machine learning models with the [Prediction](docs/transformers/transform_trafficprediction.md) transformer
   - [Reordering](docs/transformers/transform_reordering.md) DNS messages based on timestamps
 
 ## Get Started
