@@ -35,13 +35,13 @@ builds:
 
 archives:
 - id: zipformat
-  format: zip
+  formats: [ 'zip' ]
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
   files:
     - config.yml
     
 - id: targzformat
-  format: tar.gz
+  formats: [ 'tar.gz' ]
   name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
   files:
     - config.yml
