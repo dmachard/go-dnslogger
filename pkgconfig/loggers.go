@@ -13,11 +13,12 @@ type ConfigLoggers struct {
 		ChannelBufferSize int  `yaml:"chan-buffer-size" default:"0"`
 	} `yaml:"devnull"`
 	Stdout struct {
-		Enable            bool   `yaml:"enable" default:"false"`
-		Mode              string `yaml:"mode" default:"text"`
-		TextFormat        string `yaml:"text-format" default:""`
-		JinjaFormat       string `yaml:"jinja-format" default:""`
-		ChannelBufferSize int    `yaml:"chan-buffer-size" default:"0"`
+		Enable               bool   `yaml:"enable" default:"false"`
+		Mode                 string `yaml:"mode" default:"text"`
+		TextFormat           string `yaml:"text-format" default:""`
+		JinjaFormat          string `yaml:"jinja-format" default:""`
+		ChannelBufferSize    int    `yaml:"chan-buffer-size" default:"0"`
+		OverwriteDnsPortPcap bool   `yaml:"overwrite-dns-port-pcap" default:"false"`
 	} `yaml:"stdout"`
 	Prometheus struct {
 		Enable                    bool     `yaml:"enable" default:"false"`
@@ -69,20 +70,21 @@ type ConfigLoggers struct {
 		ChannelBufferSize int    `yaml:"chan-buffer-size" default:"0"`
 	} `yaml:"restapi"`
 	LogFile struct {
-		Enable            bool   `yaml:"enable" default:"false"`
-		FilePath          string `yaml:"file-path" default:""`
-		MaxSize           int    `yaml:"max-size" default:"100"`
-		MaxFiles          int    `yaml:"max-files" default:"10"`
-		MaxBatchSize      int    `yaml:"max-batch-size" default:"65536"`
-		FlushInterval     int    `yaml:"flush-interval" default:"1"`
-		Compress          bool   `yaml:"compress" default:"false"`
-		Mode              string `yaml:"mode" default:"text"`
-		PostRotateCommand string `yaml:"postrotate-command" default:""`
-		PostRotateDelete  bool   `yaml:"postrotate-delete-success" default:"false"`
-		TextFormat        string `yaml:"text-format" default:""`
-		JinjaFormat       string `yaml:"jinja-format" default:""`
-		ChannelBufferSize int    `yaml:"chan-buffer-size" default:"0"`
-		ExtendedSupport   bool   `yaml:"extended-support" default:"false"`
+		Enable               bool   `yaml:"enable" default:"false"`
+		FilePath             string `yaml:"file-path" default:""`
+		MaxSize              int    `yaml:"max-size" default:"100"`
+		MaxFiles             int    `yaml:"max-files" default:"10"`
+		MaxBatchSize         int    `yaml:"max-batch-size" default:"65536"`
+		FlushInterval        int    `yaml:"flush-interval" default:"1"`
+		Compress             bool   `yaml:"compress" default:"false"`
+		Mode                 string `yaml:"mode" default:"text"`
+		PostRotateCommand    string `yaml:"postrotate-command" default:""`
+		PostRotateDelete     bool   `yaml:"postrotate-delete-success" default:"false"`
+		TextFormat           string `yaml:"text-format" default:""`
+		JinjaFormat          string `yaml:"jinja-format" default:""`
+		ChannelBufferSize    int    `yaml:"chan-buffer-size" default:"0"`
+		ExtendedSupport      bool   `yaml:"extended-support" default:"false"`
+		OverwriteDnsPortPcap bool   `yaml:"overwrite-dns-port-pcap" default:"false"`
 	} `yaml:"logfile"`
 	DNSTap struct {
 		Enable            bool   `yaml:"enable" default:"false"`

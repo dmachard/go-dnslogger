@@ -3,6 +3,7 @@ package dnsutils
 const (
 	ProtoDoT = "DOT"
 	ProtoDoH = "DOH"
+	ProtoDoQ = "DOQ"
 
 	DNSRcodeNoError  = "NOERROR"
 	DNSRcodeNXDomain = "NXDOMAIN"

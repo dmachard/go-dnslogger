@@ -21,6 +21,10 @@ Options:
   > Specifies the maximum number of packets that can be buffered before discard additional packets.
   > Set to zero to use the default global value.
 
+* `overwrite-dns-port-pcap` (bool)
+  > tThis option is used only with the `pcap` output mode.
+  > It replaces the destination port with 53, ensuring no distinction between DoT, DoH, and DoQ.
+
 Default values:
 
 ```yaml
@@ -29,6 +33,7 @@ stdout:
   text-format: ""
   jinja-format: ""
   chan-buffer-size: 0
+  overwrite-dns-port-pcap: false
 ```
 
 Example:

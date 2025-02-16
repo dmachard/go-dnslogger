@@ -11,7 +11,7 @@ import (
 	"github.com/google/gopacket/layers"
 )
 
-func (dm *DNSMessage) ToPacketLayer() ([]gopacket.SerializableLayer, error) {
+func (dm *DNSMessage) ToPacketLayer(overwritePort bool) ([]gopacket.SerializableLayer, error) {
 	if len(dm.DNS.Payload) == 0 {
 		return nil, errors.New("payload is empty")
 	}
@@ -55,8 +55,17 @@ func (dm *DNSMessage) ToPacketLayer() ([]gopacket.SerializableLayer, error) {
 
 	// DNS over UDP
 	case netutils.ProtoUDP:
+		// set original port
 		udp.SrcPort = layers.UDPPort(srcPort)
 		udp.DstPort = layers.UDPPort(dstPort)
+
+		// translate to défault DNS port ?
+		if dm.DNS.Type == DNSQuery && overwritePort {
+			udp.DstPort = 53
+		}
+		if dm.DNS.Type == DNSReply && overwritePort {
+			udp.SrcPort = 53
+		}
 
 		// update iplayer
 		switch dm.NetworkInfo.Family {
@@ -72,10 +81,19 @@ func (dm *DNSMessage) ToPacketLayer() ([]gopacket.SerializableLayer, error) {
 
 	// DNS over TCP
 	case netutils.ProtoTCP:
+		// set original port
 		tcp.SrcPort = layers.TCPPort(srcPort)
 		tcp.DstPort = layers.TCPPort(dstPort)
 		tcp.PSH = true
 		tcp.Window = 65535
+
+		// translate to défault DNS port ?
+		if dm.DNS.Type == DNSQuery && overwritePort {
+			tcp.DstPort = 53
+		}
+		if dm.DNS.Type == DNSReply && overwritePort {
+			tcp.SrcPort = 53
+		}
 
 		// dns length
 		dnsLengthField := make([]byte, 2)
@@ -95,9 +113,18 @@ func (dm *DNSMessage) ToPacketLayer() ([]gopacket.SerializableLayer, error) {
 
 	// DNS over HTTPS and DNS over TLS
 	// These protocols are translated to DNS over UDP
-	case ProtoDoH, ProtoDoT:
+	case ProtoDoH, ProtoDoT, ProtoDoQ:
+		// set original port
 		udp.SrcPort = layers.UDPPort(srcPort)
 		udp.DstPort = layers.UDPPort(dstPort)
+
+		// overwrite with default DNS port ?
+		if dm.DNS.Type == DNSQuery && overwritePort {
+			udp.DstPort = 53
+		}
+		if dm.DNS.Type == DNSReply && overwritePort {
+			udp.SrcPort = 53
+		}
 
 		// update iplayer
 		switch dm.NetworkInfo.Family {
