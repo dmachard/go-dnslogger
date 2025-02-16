@@ -18,7 +18,7 @@ type ConfigLoggers struct {
 		TextFormat           string `yaml:"text-format" default:""`
 		JinjaFormat          string `yaml:"jinja-format" default:""`
 		ChannelBufferSize    int    `yaml:"chan-buffer-size" default:"0"`
-		OverwriteDnsPortPcap bool   `yaml:"overwrite-dns-port-pcap" default:"false"`
+		OverwriteDNSPortPcap bool   `yaml:"overwrite-dns-port-pcap" default:"false"`
 	} `yaml:"stdout"`
 	Prometheus struct {
 		Enable                    bool     `yaml:"enable" default:"false"`
@@ -84,7 +84,7 @@ type ConfigLoggers struct {
 		JinjaFormat          string `yaml:"jinja-format" default:""`
 		ChannelBufferSize    int    `yaml:"chan-buffer-size" default:"0"`
 		ExtendedSupport      bool   `yaml:"extended-support" default:"false"`
-		OverwriteDnsPortPcap bool   `yaml:"overwrite-dns-port-pcap" default:"false"`
+		OverwriteDNSPortPcap bool   `yaml:"overwrite-dns-port-pcap" default:"false"`
 	} `yaml:"logfile"`
 	DNSTap struct {
 		Enable            bool   `yaml:"enable" default:"false"`

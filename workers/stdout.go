@@ -167,7 +167,7 @@ func (w *StdOut) StartLogging() {
 					continue
 				}
 
-				pkt, err := dm.ToPacketLayer(w.GetConfig().Loggers.Stdout.OverwriteDnsPortPcap)
+				pkt, err := dm.ToPacketLayer(w.GetConfig().Loggers.Stdout.OverwriteDNSPortPcap)
 				if err != nil {
 					w.LogError("process: unable to pack layer: %s", err)
 					continue

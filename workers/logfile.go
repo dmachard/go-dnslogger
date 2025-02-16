@@ -635,7 +635,7 @@ func (w *LogFile) StartLogging() {
 
 			// with pcap mode
 			case pkgconfig.ModePCAP:
-				pkt, err := dm.ToPacketLayer(w.GetConfig().Loggers.LogFile.OverwriteDnsPortPcap)
+				pkt, err := dm.ToPacketLayer(w.GetConfig().Loggers.LogFile.OverwriteDNSPortPcap)
 				if err != nil {
 					w.LogError("failed to encode to packet layer: %s", err)
 					continue
