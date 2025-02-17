@@ -67,7 +67,12 @@ func (w *DnstapProxifier) HandleConn(conn net.Conn, connID uint64, forceClose ch
 	peer := conn.RemoteAddr().String()
 	w.LogInfo("new connection from %s\n", peer)
 
-	recvChan := make(chan []byte, 512)
+	bufSize := w.config.Global.Worker.ChannelBufferSize
+	if w.config.Collectors.DnstapProxifier.ChannelBufferSize > 0 {
+		bufSize = w.config.Collectors.DnstapProxifier.ChannelBufferSize
+	}
+
+	recvChan := make(chan []byte, bufSize)
 	defaultRoutes, _ := GetRoutes(w.GetDefaultRoutes())
 	go w.HandleFrame(recvChan, defaultRoutes)
 

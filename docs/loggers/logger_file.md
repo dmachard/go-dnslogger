@@ -137,19 +137,6 @@ mv $1 $BACKUP_FOLDER/$3
 
 > Note: If compression is enabled, the postrotate-command will run only after compression completes.
 
-## Save to PCAP files
-
-You can configure the collector to save traffic in PCAP format. Only available with `logger file`.
-
-In PCAP mode, DNS traffic is logged in binary form, capturing details over various protocols. The following mappings are used:
-
-| Origin protocol        | Translated to                  |
-| -----------------------|--------------------------------|
-| DNS/53 over UDP        | DNS UDP/53                     |
-| DNS/53 over TCP        | DNS TCP/53                     |
-| DoH/TCP/443            | DNS UDP/443 (no cipher)        |
-| DoT/TCP/853            | DNS UDP/853 (no cipher)        |
-| DoQ/UDP/443            | DNS UDP/443 (no cipher)        |
 
 ## Save to DNStap files
 

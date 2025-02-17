@@ -291,4 +291,19 @@ This JSON message can be also extended by transformer(s):
 - [Public suffix](transformers/transform_normalize.md)
 - [Traffic reducer](transformers/transform_trafficreducer.md)
 - [Traffic filtering](transformers/transformer_trafficfiltering.md)
-*
+
+## PCAP
+
+You can configure the collector to save traffic in PCAP format.
+This option is only available when using the `file` or `stdout` loggers.
+
+In PCAP mode, DNS traffic is logged in binary form, capturing details over various protocols, 
+the following mappings are applied:
+
+| Origin protocol        | Translated to                  |
+| -----------------------|--------------------------------|
+| DNS/53 over UDP        | DNS UDP/53                     |
+| DNS/53 over TCP        | DNS TCP/53                     |
+| DoH/TCP/443            | DNS UDP/443 (unencrypted)      |
+| DoT/TCP/853            | DNS UDP/853 (unencrypted)      |
+| DoQ/UDP/443            | DNS UDP/443 (unencrypted)      |
